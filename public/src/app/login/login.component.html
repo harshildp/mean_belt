@@ -1,0 +1,12 @@
+<h1>Q & A</h1>
+<form (submit)='login(formData)' #formData='ngForm'>
+  <input
+  name='name'
+  type='text'
+  required
+  minlength='2'
+  placeholder='Enter name'
+  [(ngModel)]='username'
+  >
+  <button [disabled]='!formData.valid'>Enter</button> 
+</form>

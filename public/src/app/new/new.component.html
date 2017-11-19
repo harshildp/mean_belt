@@ -1,0 +1,22 @@
+<a [routerLink]="['/dashboard']">Home</a>
+<a (click)='logout()'>Logout</a>
+<h1>New Question</h1>
+<form #formData='ngForm'>
+  <textarea
+    name='question'
+    required
+    minlength='10'
+    placeholder='Enter your question here..'
+    [(ngModel)]='newQuestion.question'
+    #question = 'ngModel'
+  ></textarea>
+  <small [hidden]='question.valid || question.untouched'>Question is required and must be at least 10 characters</small>
+  <textarea
+    name='desc'
+    placeholder='Optional area to give your question a description'
+    [(ngModel)]='newQuestion.desc'
+    #desc = 'ngModel'
+></textarea>
+<button (click)='goBack()'>Cancel</button>
+<button [disabled]='!formData.valid' (click)='postQuestion()'>Submit</button>
+</form>

@@ -1,0 +1,25 @@
+<a [routerLink]="['/dashboard']">Home</a>
+<a [routerLink]="['/questions', currentQuestion._id]">Back to question</a>
+<a (click)='logout()'>Logout</a>
+<h1>{{currentQuestion.question}}</h1>
+<h4>{{currentQuestion.desc}}</h4>
+
+<form #formData='ngForm'>
+  <textarea
+    name='answer'
+    required
+    minlength='5'
+    placeholder='Enter your answer here..'
+    [(ngModel)]='newAnswer.answer'
+    #answer = 'ngModel'
+  ></textarea>
+  <small [hidden]='answer.valid || answer.untouched'>Answer is required and must be at least 5 characters</small>
+  <textarea
+    name='details'
+    placeholder='Optional area to give your answer some additional details'
+    [(ngModel)]='newAnswer.details'
+    #details = 'ngModel'
+></textarea>
+<button (click)='goBack()'>Cancel</button>
+<button [disabled]='!formData.valid' (click)='submitAnswer()'>Submit</button>
+</form>
